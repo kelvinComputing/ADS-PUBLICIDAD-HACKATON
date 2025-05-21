@@ -1,48 +1,36 @@
-# Astro Starter Kit: Basics
+# 🚀 ADS Application
 
-```sh
-npm create astro@latest -- --template basics
-```
+Una aplicación web moderna para la gestión de ADS, construida con [Astro](https://astro.build/), autenticación segura con [Clerk](https://clerk.dev/) y comunicación eficiente con un backend centralizado.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 🧩 Tecnologías principales
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- 🌌 **[Astro](https://astro.build/)** – Framework moderno para construir sitios rápidos y optimizados.
+- 🔐 **[Clerk](https://clerk.dev/)** – Autenticación y gestión de usuarios sin complicaciones.
+- 🔗 *API Backend* – Conexión a un backend para obtener, enviar y procesar datos de manera segura y eficiente.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
 
-## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🔐 Autenticación con Clerk
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+La aplicación usa Clerk para gestionar:
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- Registro e inicio de sesión de usuarios
+- Sesiones seguras
+- Protección de rutas
+- Acceso a datos del usuario actual desde frontend y middleware
 
-## 🧞 Commands
+> Clerk está integrado a través de sus SDKs para Astro y se configura fácilmente con las claves del proyecto desde el archivo .env.
 
-All commands are run from the root of the project, from a terminal:
+## 🌐 Comunicación con el Backend
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Las peticiones al backend se realizan utilizando fetch, centralizadas en utilidades dentro de src/lib/api.ts. Estas funciones permiten:
 
-## 👀 Want to learn more?
+- Obtener datos protegidos usando el token de Clerk
+- Enviar formularios o datos de manera segura
+- Manejar errores y respuestas de forma estandarizada
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+PD: Todos los datos que existen en el proyecto actualmente, son meramente ficticios, no se usan nombre de personas reales. 
+
+
+
+🌐 *Producción:* [https://ads-publicidad.netlify.app/](https://ads-publicidad.netlify.app/)
