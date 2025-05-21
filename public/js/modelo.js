@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		if (modelId) {
 			e.preventDefault();
 
-			window.location.pathname = `dashboard-modelo/vista_personal`;
+			window.location.pathname = `vista_personal`;
 		}
 	});
 });
@@ -543,7 +543,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		if (modelId) {
 			e.preventDefault();
-			window.location.href = `vista_personal?id=${modelId}`;
+			window.location.href = `dashboard-modelo/vista_personal?id=${modelId}`;
 		}
 	});
 });
