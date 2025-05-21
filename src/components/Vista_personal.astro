@@ -1,0 +1,210 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<div class="container">
+	<div class="model-profile">
+		<div class="profile-column">
+			<div class="profile-card">
+				<div class="profile-image-container">
+					<div class="image-wrapper">
+						<img src="/descarga.png" alt="Foto del modelo" class="model-photo" id="foto-perfill" />
+						<div class="photo-badge">
+							<i class="fas fa-camera"></i> Cambiar foto
+						</div>
+					</div>
+					<div class="profile-info">
+						<div class="model-name" id="nombre-perfil"></div>
+						<div>
+							<div id="id-perfil"></div>
+						</div>
+						<div class="model-status">
+							<span class="status-badge active">
+								<i class="fas fa-circle"></i> Activo
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="details-section mt-4">
+					<h3 class="text-xl font-semibold mb-3">
+						<i class="fas fa-id-card mr-2"></i>Información Personal
+					</h3>
+					<div class="detail-item mb-2">
+						<span class="detail-label font-medium">CI:</span>
+						<span class="detail-value" id="cedula-perfil"></span>
+					</div>
+					<div class="detail-item mb-2">
+						<span class="detail-label font-medium">Edad</span>
+						<span class="detail-value" id="perfil-edad"></span>
+					</div>
+					<div class="detail-item mb-2">
+						<span class="detail-label font-medium">Teléfono:</span>
+						<span class="" id="perfil-telefono"></span>
+					</div>
+					<div class="detail-item mb-2">
+						<span class="detail-label font-medium">Email:</span>
+						<span class="detail-value" id="perfil-email"></span>
+					</div>
+				</div>
+
+				<div class="modal fade" id="editarModeloModal" tabindex="-1" aria-labelledby="editarModeloModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="editarModeloModalLabel">Editar Información del Modelo</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<form id="formEditarModelo">
+									<div class="mb-3">
+										<label for="edit-ci" class="form-label">CI</label>
+										<input type="text" class="form-control" id="edit-ci" />
+									</div>
+									<div class="mb-3">
+										<label for="edit-edad" class="form-label">Edad</label>
+										<input type="text" class="form-control" id="edit-edad" />
+									</div>
+									<div class="mb-3">
+										<label for="edit-phone" class="form-label">Teléfono</label>
+										<input type="tel" class="form-control" id="edit-phone" />
+									</div>
+									<div class="mb-3">
+										<label for="edit-email" class="form-label">Email</label>
+										<input type="email" class="form-control" id="edit-email" />
+									</div>
+									<div class="mb-3">
+										<label for="edit-tipo-cuenta" class="form-label">Tipo de Cuenta</label>
+										<select id="edit-tipo-cuenta" class="form-control" style="padding: 0.6rem 1rem; border-radius: 0.375rem; border: 1px solid #ced4da">
+											<option value="" disabled selected>Seleccione una opción</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+										</select>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+								<button type="button" class="btn btn-primary">Guardar Cambios</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="details-section wallet-summary">
+				<h3><i class="fas fa-wallet"></i> Resumen Billetera</h3>
+				<div class="wallet-balance">
+					<div id="saldo" class="balance-amount"></div>
+					<div class="balance-label">Saldo Actual</div>
+				</div>
+				<div class="wallet-stats">
+					<div class="stat-item" id="balance-ingresos">
+						<div class="stat-value credit">$250.00</div>
+						<div class="stat-label">Crédito</div>
+					</div>
+					<div class="stat-item" id="balance-gastos">
+						<div class="stat-value debit">$100.00</div>
+						<div class="stat-label">Débito</div>
+					</div>
+					<div class="stat-item">
+						<div class="stat-value movimiento">5</div>
+						<div class="stat-label">Movimientos</div>
+					</div>
+				</div>
+				<button class="btn btn-view-wallet">
+					<i class="fas fa-eye"></i> Ver detalle completo
+				</button>
+			</div>
+
+			<div class="qr-card">
+				<h3><i class="fas fa-qrcode"></i> Identificación</h3>
+				<div class="qr-code-container">
+					<img id="img-qr" src="/qr-code-placeholder.png" alt="Código QR" />
+					<div id="id-qr" class="qr-text"></div>
+				</div>
+				<div class="qr-actions">
+					<button class="btn btn-download">
+						<i class="fas fa-download"></i> Descargar
+					</button>
+					<button class="btn btn-print">
+						<i class="fas fa-print"></i> Imprimir
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="content-column">
+			<div class="section-card">
+				<div class="section-header">
+					<h2><i class="fas fa-tags"></i> Pautas Asignadas</h2>
+				</div>
+				<div class="tags-container"></div>
+			</div>
+
+			<div class="modal fade" id="agregarPautaModal" tabindex="-1" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header bg-primary text-white">
+							<h5 class="modal-title">
+								<i class="fas fa-tags me-2"></i>Agregar Pauta
+							</h5>
+							<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<form id="formAgregarPauta">
+								<div class="mb-3">
+									<label class="form-label">Tipo de Pauta*</label>
+									<div class="input-group mb-3">
+										<select class="form-select" id="pautaTipo">
+											<option value="">Seleccione o ingrese nuevo</option>
+											<option value="gala">Gala y Formal</option>
+											<option value="casual">Casual</option>
+											<option value="sport">Deportivo</option>
+											<option value="custom">-- Ingresar nuevo tipo --</option>
+										</select>
+									</div>
+									<input type="text" class="form-control mt-2 d-none" id="nuevoTipoPauta" placeholder="Escriba el nuevo tipo de pauta" />
+								</div>
+								<div class="mb-3">
+									<label for="pautaDescripcion" class="form-label">Descripción (Opcional)</label>
+									<textarea class="form-control" id="pautaDescripcion" rows="3"></textarea>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+								<i class="fas fa-times me-1"></i>Cancelar
+							</button>
+							<button type="button" class="btn btn-primary" id="guardarPauta">
+								<i class="fas fa-save me-1"></i>Guardar Pauta
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="section-card transactions-section" style="display: none;">
+				<div class="section-header">
+					<h2><i class="fas fa-exchange-alt"></i> Historial de Movimientos</h2>
+				</div>
+				<div class="transactions-table"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+	crossorigin="anonymous"
+/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<script src="/js/datos-model.js" defer></script>

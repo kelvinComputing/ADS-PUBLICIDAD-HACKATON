@@ -1,0 +1,53 @@
+---
+import { UserButton } from '@clerk/astro/components';
+---
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<div class="sidebar flex flex-col justify-between">
+	<div>
+		<div class="logo">
+			<h1>Ad<span>Panel</span></h1>
+		</div>
+		<a href="/dashboard" class="menu-item">
+			<i class="fas fa-chart-line"></i>
+			<span>Dashboard</span>
+		</a>
+		<a href="/dashboard-pautas" class="menu-item">
+			<i class="fas fa-file-alt"></i>
+			<span>Pautas</span>
+		</a>
+		<a href="/dashboard-campana" class="menu-item">
+			<i class="fas fa-bullhorn"></i>
+			<span>Campañas</span>
+		</a>
+		<a href="/dashboard-modelo" class="menu-item">
+			<i class="fas fa-users"></i>
+			<span>Modelos</span>
+		</a>
+		<a href="/dashboard-wallet" class="menu-item">
+			<i class="fa-solid fa-wallet"></i>
+			<span>Wallet</span>
+		</a>
+		<a href="/dashboard-publicidad" class="menu-item">
+			<i class="fa-solid fa-bullhorn"></i>
+			<span>Publicidades</span>
+		</a>
+	</div>
+
+	<div class="flex">
+		<UserButton showName />
+	</div>
+</div>
+
+<script>
+	const observer = new MutationObserver(() => {
+		const target = document.querySelector('.cl-internal-2z8hkq');
+		if (target) {
+			target.classList.add('flex', 'flex-row-reverse');
+			 
+		}
+	});
+
+	observer.observe(document.body, { childList: true, subtree: true });
+</script>

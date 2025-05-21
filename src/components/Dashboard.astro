@@ -1,0 +1,170 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+	crossorigin="anonymous"
+/>
+
+<div class="dashboard">
+	<div class="main-content">
+		<div class="header">
+			<h2>Dashboard de Publicidad</h2>
+		</div>
+
+		<div class="cards-row">
+			<div class="card">
+				<div id="Gasto-total" class="card-header">
+					<div class="card-title">Gasto Total</div>
+					<div class="card-icon bg-primary">
+						<i class="fas fa-dollar-sign"></i>
+					</div>
+				</div>
+				<div class="card-value">Cargando...</div>
+				<div class="card-label">Periodo actual</div>
+			</div>
+			<div class="card">
+				<div id="Campañas-activas" class="card-header">
+					<div class="card-title">Campañas Activas</div>
+					<div class="card-icon bg-success">
+						<i class="fas fa-bullhorn"></i>
+					</div>
+				</div>
+				<div class="card-value">Cargando...</div>
+				<div class="card-label">En ejecución</div>
+			</div>
+			<div class="card">
+				<div id="Modelos-contratados" class="card-header">
+					<div class="card-title">Modelos Contratados</div>
+					<div class="card-icon bg-warning">
+						<i class="fas fa-user-tie"></i>
+					</div>
+				</div>
+				<div class="card-value">Cargando...</div>
+				<div class="card-label">En plantilla</div>
+			</div>
+		</div>
+
+		<div class="card payment-management-card">
+			<div class="card-header">
+				<div class="card-title-container">
+					<i class="fas fa-money-check-alt card-header-icon"></i>
+					<h3 class="card-title">Gestión de Pagos a Modelos</h3>
+				</div>
+			</div>
+
+			<div class="payment-summary-grid">
+				<div class="payment-summary-card">
+					<div class="summary-icon bg-primary">
+						<i class="fas fa-wallet"></i>
+					</div>
+					<div id="total-pagado" class="summary-content">
+						<h4>Total Pagado</h4>
+						<p class="summary-amount">$45,230</p>
+					</div>
+				</div>
+				<div class="payment-summary-card">
+					<div class="summary-icon bg-success">
+						<i class="fas fa-user-check"></i>
+					</div>
+					<div id="Pagos-completados" class="summary-content">
+						<h4>Pagos Completados</h4>
+						<p class="summary-amount">22</p>
+					</div>
+				</div>
+				<div class="payment-summary-card">
+					<div class="summary-icon bg-warning">
+						<i class="fas fa-hourglass-half"></i>
+					</div>
+					<div id="Pagos-pendientes" class="summary-content">
+						<h4>Pagos Pendientes</h4>
+						<p class="summary-amount">5</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="payment-filters">
+				<div class="search-container">
+					<i class="fas fa-search search-icon"></i>
+					<input type="text" id="model-search" class="search-input" placeholder="Buscar modelo por nombre o campaña" />
+				</div>
+				<div class="filter-controls">
+					<select id="payment-status-filter" class="filter-select">
+						<option value="">Todos los estados</option>
+						<option value="ACTIVA">Pendiente</option>
+						<option value="PROCESADA">Pagado</option>
+						<option value="ATRASADA">Atrasado</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="payment-table-container">
+				<table class="payment-table">
+					<thead>
+						<tr>
+							<th>Modelo</th>
+							<th>Pauta</th>
+							<th>Monto</th>
+							<th>Estado</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="model-profile">
+								<img src="" alt="Modelo" class="model-avatar" />
+								<div class="model-details">
+									<span class="model-name">Laura Mendoza</span>
+									<span class="model-handle">@lauramendoza</span>
+								</div>
+							</td>
+							<td class="campa">Campaña Verano 2025</td>
+							<td class="payment-amount">$1,250</td>
+							<td>
+								<span class="payment-status payment-status--pending">
+									<span class="payment-status__circle"></span>
+									<span class="payment-status__text">Pendiente</span>
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="model-profile">
+								<img src="" alt="Modelo" class="model-avatar" />
+								<div class="model-details">
+									<span class="model-name">Carlos Vega</span>
+									<span class="model-handle">@carlosvega</span>
+								</div>
+							</td>
+							<td class="campa">Lanzamiento Colección</td>
+							<td class="payment-amount">$950</td>
+							<td>
+								<span class="payment-status payment-status--overdue">
+									<span class="payment-status__circle"></span>
+									<span class="payment-status__text">Atrasado</span>
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="model-profile">
+								<img src="" alt="Modelo" class="model-avatar" />
+								<div class="model-details">
+									<span class="model-name">Ana Martínez</span>
+									<span class="model-handle">@anamartinez</span>
+								</div>
+							</td>
+							<td class="campa">Evento Corporativo</td>
+							<td class="payment-amount">$1,750</td>
+							<td>
+								<span class="payment-status payment-status--completed">
+									<span class="payment-status__circle"></span>
+									<span class="payment-status__text">Pagado</span>
+								</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<script src="/js/dashboard.js" defer></script>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,169 @@
+---
+import { SignIn, SignUp } from '@clerk/astro/components';
+---
+
+<style>
+	.show-register .login-section {
+		transform: translateX(-100%);
+	}
+
+	.show-register .register-section {
+		transform: translateX(-100%);
+	}
+
+	.cl-signIn-start {
+		width: 100% !important;
+	}
+</style>
+
+<section>
+	<div class="bg-gray-100 h-screen flex items-center justify-center p-4">
+		<div id="authContainer" class="relative overflow-hidden w-full max-w-[50rem] bg-white rounded-xl shadow-lg h-[600px]">
+			<div class="absolute top-0 left-0 w-full h-full flex transition-transform duration-1000 ease-in-out login-section">
+				<div class="w-1/2 h-full flex items-center justify-center">
+					<div class="w-full h-full">
+						<SignIn
+							routing="path"
+							path="/"
+							appearance={{
+								variables: {
+									colorPrimary: '#4f46e5',
+									colorBackground: '#f9fafb'
+								},
+								elements: {
+									card: {
+										minWidth: '100%',
+										maxWidth: '100%',
+										width: '100%',
+										height: '100%',
+										display: 'flex',
+										flexDirection: 'column',
+										justifyContent: 'center',
+										boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+										border: '1px solid #e5e7eb',
+										borderRadius: '0.5rem',
+										padding: '2rem'
+									},
+									rootBox: {
+										height: '100%',
+										width: '100%',
+										display: 'flex'
+									}
+								}
+							}}
+							afterSignInUrl="/dashboard"
+							signUpUrl="/"
+						/>
+					</div>
+				</div>
+				<div class="w-1/2 h-full">
+					<img src="/login.jpg" alt="Ilustración de login" class="w-full h-full object-cover" />
+				</div>
+			</div>
+
+			<div class="absolute top-0 left-full w-full h-full flex transition-transform duration-1000 ease-in-out register-section">
+				<div class="w-1/2 h-full">
+					<img src="/register.jpg" alt="Ilustración de registro" class="w-full h-full object-cover" />
+				</div>
+				<div class="w-1/2 h-full flex items-center justify-center">
+					<div class="w-full h-full">
+						<SignUp
+							appearance={{
+								variables: {
+									colorPrimary: '#4f46e5',
+									colorBackground: '#f9fafb'
+								},
+								elements: {
+									card: {
+										minWidth: '100%',
+										maxWidth: '100%',
+										width: '100%',
+										height: '100%',
+										display: 'flex',
+										flexDirection: 'column',
+										justifyContent: 'center',
+										boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+										border: '1px solid #e5e7eb',
+										borderRadius: '0.5rem',
+										padding: '2rem'
+									},
+									rootBox: {
+										height: '100%',
+										width: '100%',
+										display: 'flex'
+									}
+								}
+							}}
+							afterSignUpUrl="/dashboard"
+							signInUrl="/"
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const showRegisterBtn = document.getElementById('showRegister');
+		const showLoginBtn = document.getElementById('showLogin');
+		const authContainer = document.getElementById('authContainer');
+
+		if (showRegisterBtn) {
+			showRegisterBtn.addEventListener('click', function (e) {
+				e.preventDefault();
+				authContainer.classList.add('show-register');
+			});
+		}
+
+		if (showLoginBtn) {
+			showLoginBtn.addEventListener('click', function (e) {
+				e.preventDefault();
+				authContainer.classList.remove('show-register');
+			});
+		}
+
+		const observer = new MutationObserver(() => {
+			const signUpLink = [...document.querySelectorAll('a')].find((a) => a.textContent.trim() === 'Regístrese');
+			const signInLink = [...document.querySelectorAll('a')].find((a) => a.textContent.trim() === 'Iniciar sesión');
+
+			if (signUpLink) {
+				signUpLink.addEventListener(
+					'click',
+					(e) => {
+						e.preventDefault();
+						e.stopImmediatePropagation();
+						e.stopPropagation();
+
+						authContainer.classList.add('show-register');
+					},
+					true
+				);
+
+				observer.disconnect();
+			}
+
+			if (signInLink) {
+				signInLink.addEventListener(
+					'click',
+					(e) => {
+						e.preventDefault();
+						e.stopImmediatePropagation();
+						e.stopPropagation();
+
+						authContainer.classList.remove('show-register');
+					},
+					true
+				);
+
+				observer.disconnect();
+			}
+		});
+
+		observer.observe(document.body, {
+			childList: true,
+			subtree: true
+		});
+	});
+</script>

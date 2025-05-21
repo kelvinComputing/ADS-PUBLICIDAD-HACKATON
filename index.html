@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sidebar Semántico</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex h-screen bg-gray-100">
+
+  <!-- Menú lateral -->
+  <aside id="sidebar" class="bg-white border-r transition-all duration-300 w-64 overflow-hidden">
+    <header class="flex items-center justify-between p-4">
+      <h2 class="text-xl font-bold">Menú</h2>
+      <button id="toggleBtn" class="text-gray-500 hover:text-black" aria-label="Toggle sidebar">
+        &#9776;
+      </button>
+    </header>
+    <nav>
+      <ul class="space-y-2 p-4">
+        <li><a href="#" class="block p-2 hover:bg-gray-200 rounded">Inicio</a></li>
+        <li><a href="#" class="block p-2 hover:bg-gray-200 rounded">Perfil</a></li>
+        <li><a href="#" class="block p-2 hover:bg-gray-200 rounded">Configuración</a></li>
+        <li><a href="#" class="block p-2 hover:bg-gray-200 rounded">Cerrar sesión</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Contenido principal -->
+  <main class="flex-1 p-6">
+    <h1 class="text-2xl font-bold mb-4">Contenido Principal</h1>
+    <section>
+      <p>Aquí va el contenido de tu aplicación...</p>
+    </section>
+  </main>
+
+  <script>
+    const sidebar = document.getElementById("sidebar");
+    const toggleBtn = document.getElementById("toggleBtn");
+
+    let isCollapsed = false;
+
+    toggleBtn.addEventListener("click", () => {
+      isCollapsed = !isCollapsed;
+      sidebar.classList.toggle("w-64", !isCollapsed);
+      sidebar.classList.toggle("w-16", isCollapsed);
+    });
+  </script>
+
+</body>
+</html>

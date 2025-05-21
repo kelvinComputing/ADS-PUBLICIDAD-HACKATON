@@ -1,0 +1,149 @@
+<div class="container-campana">
+	<header>
+		<div class="header-title">
+			<h1>Dashboard de Gastos Publicitarios</h1>
+			<p>Analítica de presupuesto y gastos de marketing</p>
+		</div>
+		<div class="header-actions">
+			<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarCampanaModal">
+				<i class="fas fa-plus"></i> Agregar Campaña
+			</button>
+		</div>
+	</header>
+
+	<div class="summary-cards">
+		<div id="presupuesto_total" class="card">
+			<div class="card-icon">
+				<i class="fas fa-wallet"></i>
+			</div>
+			<div class="card-title">PRESUPUESTO TOTAL DEL MES</div>
+			<div class="card-value">-</div>
+			<div class="card-trend">
+				<span class="trend-value">-</span>
+			</div>
+		</div>
+		<div id="restante" class="card">
+			<div class="card-icon">
+				<i class="fas fa-calendar-alt"></i>
+			</div>
+			<div class="card-title">RESTANTE</div>
+			<div class="card-value">-</div>
+			<div class="card-trend"></div>
+		</div>
+		<div id="mes_mas_frecuente" class="card">
+			<div class="card-icon">
+				<i class="fas fa-chart-line"></i>
+			</div>
+			<div class="card-title">MES MAS FRECUENTE</div>
+			<div class="card-value">-</div>
+
+			<div class="card-trend">
+				<span class="trend-value">-</span>
+			</div>
+		</div>
+	</div>
+
+	<table class="table" id="tablaCampanas">
+		<thead>
+			<tr>
+				<th>DESCRIPCIÓN</th>
+				<th>ENERO <span class="trend-indicator trend-up"></span></th>
+				<th>FEBRERO</th>
+				<th>MARZO</th>
+				<th>ABRIL</th>
+				<th>MAYO</th>
+				<th>JUNIO</th>
+				<th>JULIO</th>
+				<th>AGOSTO</th>
+				<th>SEPTIEMBRE</th>
+				<th>OCTUBRE</th>
+				<th>NOVIEMBRE</th>
+				<th>DICIEMBRE</th>
+				<th>TOTAL <span class="trend-indicator trend-up"></span></th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+
+	<!-- modal para agregar campañas -->
+	<div class="modal fade" id="agregarCampanaModal" tabindex="-1" aria-labelledby="agregarCampanaModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="agregarCampanaModalLabel">
+						<i class="fas fa-bullhorn"></i> Nueva Campaña
+					</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form id="formCampana">
+						<div class="mb-3">
+							<label for="nombreCampana" class="form-label">Nombre de la Campaña</label>
+							<input type="text" class="form-control" id="nombreCampana" placeholder="Ej: CAMPAÑAS ADS METAS" required />
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+					<button type="button" class="btn btn-primary" id="guardarCampanaBtn">Guardar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- modal para agregar gastos de campaña -->
+	<div class="modal fade" id="agregarGastosModal" tabindex="-1" aria-labelledby="agregarGastosModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="agregarGastosModalLabel">
+						<i class="fas fa-money-bill-wave"></i> Registrar Gastos de Campaña
+					</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form id="formGastos">
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								<label for="fechaPago" class="form-label">Fecha de Pago</label>
+								<input type="date" class="form-control" id="fechaPago" required />
+							</div>
+							<div class="col-md-6 mb-3">
+								<label for="tipoEvento" class="form-label">Tipo de Evento</label>
+								<input type="text" class="form-control" id="tipoEvento" placeholder="Ej: Evento, Publicidad, Otros" required />
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								<label for="tipoContenido" class="form-label">Tipo de Contenido</label>
+								<input type="text" class="form-control" id="tipoContenido" placeholder="Ej: Video, Imagen, Texto" required />
+							</div>
+							<div class="col-md-6 mb-3">
+								<label for="duracion" class="form-label">Duración (días)</label>
+								<input type="number" class="form-control" id="duracion" min="1" required />
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								<label for="alcance" class="form-label">Alcance estimado</label>
+								<input type="number" class="form-control" id="alcance" min="1" required />
+							</div>
+							<div class="col-md-6 mb-3">
+								<label for="inversion" class="form-label">Inversión ($)</label>
+								<input type="number" class="form-control" id="inversion" min="0.01" step="0.01" required />
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+					<button type="button" class="btn btn-primary" id="guardarGastosBtn">Registrar Gastos</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/js/campana.js" defer></script>

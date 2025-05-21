@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<body>
+	<div class="wallet-container">
+		<div class="loading-overlay" id="loading-overlay">
+			<div class="spinner">
+				<div class="spinner-inner"></div>
+			</div>
+			<p class="loading-text">Cargando datos financieros...</p>
+		</div>
+
+		<div class="wallet-header">
+			<h1 class="wallet-title">
+				<i class="fas fa-wallet"></i>
+				Billetera Digital
+			</h1>
+		</div>
+
+		<div class="balance-card">
+			<h3 class="balance-title">Balance Disponible</h3>
+			<div class="balance-amount" id="balance-amount">$0.00</div>
+			<div class="balance-details">
+				<div id="balance-ingresos" class="balance-detail income">
+					<i class="fas fa-arrow-up"></i>
+					<span>Ingresos: $0</span>
+				</div>
+				<div id="balance-gastos" class="balance-detail expense">
+					<i class="fas fa-arrow-down"></i>
+					<span>Gastos: $0</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="transactions-section">
+			<div class="section-header">
+				<h2 class="section-title">Últimas Transacciones</h2>
+				<div class="filter-tabs">
+					<div class="tab active" data-filter="all">Todas</div>
+					<div class="tab" data-filter="CREDITO">Ingresos</div>
+					<div class="tab" data-filter="DEBITO">Gastos</div>
+				</div>
+			</div>
+
+			<div class="transaction-list" id="transaction-list"></div>
+		</div>
+	</div>
+
+	<script src="/js/wallet.js" defer></script>
+</body>
