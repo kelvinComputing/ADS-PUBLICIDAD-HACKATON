@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		if (modelId) {
 			e.preventDefault();
 
-			window.location.pathname = `vista_personal`;
+			window.location.pathname = `dashboard-modelo/vista_personal`;
 		}
 	});
 });
