@@ -6,7 +6,7 @@ Una aplicación web moderna para la gestión de ADS, construida con [Astro](http
 
 - 🌌 **[Astro](https://astro.build/)** – Framework moderno para construir sitios rápidos y optimizados.
 - 🔐 **[Clerk](https://clerk.dev/)** – Autenticación y gestión de usuarios sin complicaciones.
-- 🔗 *API Backend* – Conexión a un backend para obtener, enviar y procesar datos de manera segura y eficiente.
+- 🔗 *API Backend* – Conexión a un backend REST desarrollado con Django (desplegado en Render) para obtener, enviar y procesar datos de manera segura y eficiente.
 
 
 
@@ -23,7 +23,8 @@ La aplicación usa Clerk para gestionar:
 
 ## 🌐 Comunicación con el Backend
 
-Las peticiones al backend se realizan utilizando fetch, centralizadas en utilidades dentro de src/lib/api.ts. Estas funciones permiten:
+Las peticiones al backend se realizan utilizando fetch directamente desde los archivos JavaScript correspondientes, utilizando una constante base (API_BASE) que apunta al servidor Django alojado en Render.
+Estas Funciones permiten:
 
 - Obtener datos protegidos usando el token de Clerk
 - Enviar formularios o datos de manera segura
